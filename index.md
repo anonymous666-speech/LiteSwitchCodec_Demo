@@ -1,22 +1,21 @@
-# <center> LiteSwitchCodec: Neural Speech Coding with Causal U-Net in Scalar Latent Space for Real-time Personalized Communications </center>
+# <center> LiteSwitchCodec: Neural Speech Coding with Token Space Quantization and Causal U-Net for Real-time Personalized Communications </center>
 
 anonymous authors
 
 
 ## Abstract
-Neural speech codecs have significantly progressed in speech communication under low bitrate conditions.
-For real-time communication (RTC) applications, these neural codecs need to operate with low computational complexity, minimal latency, and maintain high speech quality at low bitrates. 
-Most end-to-end neural speech coding methods use fully convolutional encoders and decoders, with the quantizer implemented as a vector quantizer (VQ), requiring computationally intensive decoders to ensure high-fidelity speech reconstruction.
-In this paper, we present LiteSwitchCodec, a lightweight streaming speech codec that uses scalar quantization (SQ), 
-reduces the parameters by 38x while achieving competitive quality with the DAC codec and maintaining a balanced parameter distribution between its encoder and decoder.
-Moreover, our LiteSwitchCodec can provide personalized services such as voice adaptation (VA) without additional latency.
-Traditional voice conversion (VC) model is a pre-processing module before speech coding introducing additional delays, making them unsuitable for RTC scenarios.
-Therefore, LiteSwitchCodec incorporates a lightweight causal U-net network to perform VA on the generated token, acquiring fine-grained contextual information in the compression domain.
-These transfered tokens are dequantized and decoded to produce the target speaker’s speech.
-Leveraging speaker-specific embedding, we focus on developing personalized models that work well for individual target speakers.
-Our method enables seamless switching between original voice mode and personalized VA mode with an ultra-low latency of 40 ms.
-% To effectively mitigate the quantization noise of VA mode, we design a novel token refinement network to improve speech fidelity.
-Extensive experiments and ablation studies demonstrate the effectiveness of LiteSwitchCodec, establishing it as a feasible solution for enhancing VA features.
+This paper presents LiteSwitchCodec, a lightweight and multi-functional neural speech codec designed for real-time communication (RTC). 
+It aims to achieve high-quality reconstruction while facilitating real-time personalized communication by integrating a voice adaptation (VA) module.
+For speech reconstruction, LiteSwitchCodec employs fully causal convolutional layers as the encoder and decoder to meet real-time requirements and reduces the complexity of decoder through a mirrored structure.
+Due to the large codebook storage by the residual vector quantization, we map the semantic features in the compressed domain to a discrete space via finite scalar quantization, generating semantic-aware quantized tokens. 
+A lightweight causal U-Net model is introduced in the semantic token space to extract global semantic information for personalized VA, supporting dynamic switching of target speakers.
+To realize them, we propose a two-stage training strategy.
+First, we train the LiteSwitchCodec on public datasets for speech reconstruction.
+We then construct a voice conversion (VC) dataset to train the token-level causal U-Net VA network.
+Experiments demonstrate that LiteSwitchCodec maintains RTC quality while reducing model parameters by 38x compared to the state-of-the-art descript audio codec, achieving an objective quality of ViSQOL: 4.32 at 7.2kbps. 
+Moreover, LiteSwitchCodec achieves real-time VA with a low latency of 40 ms by only increasing 4 million parameters. 
+Compared with VC models in RTC, our method shows superior performance in both subjective and objective metrics, achieving a 92.61\% similarity score (MOS: 4.67 v.s 3.59), highlighting its excellent performance in personalized communication. 
+LiteSwitchCodec provides a solution for real-time personalized communication in online conferences.
 
 <!-- 
 comments
