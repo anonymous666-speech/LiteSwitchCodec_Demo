@@ -14,7 +14,7 @@ First, we train the LiteSwitchCodec on public datasets for speech reconstruction
 We then construct a voice conversion (VC) dataset to train the token-level causal U-Net VA network.
 Experiments demonstrate that LiteSwitchCodec maintains RTC quality while reducing model parameters by 38x compared to the state-of-the-art descript audio codec, achieving an objective quality of ViSQOL: 4.32 at 7.2kbps. 
 Moreover, LiteSwitchCodec achieves real-time VA with a low latency of 40 ms by only increasing 4 million parameters. 
-Compared with VC models in RTC, our method shows superior performance in both subjective and objective metrics, achieving a 92.61\% similarity score (MOS: 4.67 v.s 3.59), highlighting its excellent performance in personalized communication. 
+Compared with VC models in RTC, our method shows superior performance in both subjective and objective metrics, achieving a 92.61% similarity score (MOS: 4.67 v.s 3.59), highlighting its excellent performance in personalized communication. 
 LiteSwitchCodec provides a solution for real-time personalized communication in online conferences.
 
 <!-- 
